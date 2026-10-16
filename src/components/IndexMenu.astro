@@ -1,0 +1,28 @@
+---
+import { TOPICS, TOPIC_VIZ, type Lang, type Topic } from '../config/site';
+import { UI, TOPIC_NAMES, localePath } from '../i18n/ui';
+import Lockup from './Lockup.astro';
+interface Props { lang: Lang; counts: Record<Topic, number>; alt: { en: string; ms: string } }
+const { lang, counts, alt } = Astro.props;
+const t = UI[lang];
+---
+<div class="ix-over" id="ixOver" hidden role="dialog" aria-modal="true" aria-label={t.index}>
+  <div class="wrap hdr-in">
+    <Lockup lang={lang} />
+    <button class="index-btn" type="button" id="closeIx"><span>{t.close}</span><span class="g" aria-hidden="true"><i></i></span></button>
+  </div>
+  <div class="wrap ix-body">
+    <ul class="ix-list" id="ixList">
+      {TOPICS.map((k) => (
+        <li><a href={localePath(lang, `/${k}/`)} data-pv-kind={TOPIC_VIZ[k].kind} data-pv-seed={TOPIC_VIZ[k].seed}><span>{TOPIC_NAMES[lang][k]}</span>{counts[k] > 0 && <span class="n">{counts[k]}</span>}</a></li>
+      ))}
+      <li><a href={localePath(lang, '/about/')} data-pv-kind="team" data-pv-seed="9"><span>{t.about}</span></a></li>
+      <li><a href={localePath(lang, '/contact/')} data-pv-kind="roots" data-pv-seed="21"><span>{t.contact}</span></a></li>
+    </ul>
+    <div class="ix-prev" aria-hidden="true"><canvas class="viz" id="ixCanvas"></canvas><span class="cap" id="ixCap"></span></div>
+  </div>
+  <div class="wrap ix-foot">
+    <div class="grp"><span>{t.language}</span><a href={alt.en} lang="en" aria-current={lang === 'en' ? 'true' : undefined}>English</a><a href={alt.ms} lang="ms" aria-current={lang === 'ms' ? 'true' : undefined}>Bahasa Melayu</a></div>
+    <div class="grp" role="group" aria-label={t.theme}><span>{t.theme}</span><button type="button" data-theme-set="system" aria-pressed="true">{t.themeSystem}</button><button type="button" data-theme-set="light" aria-pressed="false">{t.themeLight}</button><button type="button" data-theme-set="dark" aria-pressed="false">{t.themeDark}</button></div>
+  </div>
+</div>

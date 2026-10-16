@@ -1,0 +1,25 @@
+---
+import { TOPICS, type Lang } from '../config/site';
+import { UI, TOPIC_NAMES, TOPIC_SHORT } from '../i18n/ui';
+import Viz from './Viz.astro';
+interface Props { lang: Lang; variant?: 'site' | 'topic'; seed?: number }
+const { lang, variant = 'site', seed = 77 } = Astro.props;
+const t = UI[lang];
+---
+<div class="empty">
+  <Viz kind="roots" seed={seed} />
+  <div class="pnl">
+    <span class="cap">{t.soonK}</span>
+    {variant === 'site' ? (
+      <>
+        <h3>{t.soonH}</h3>
+        <ul>{TOPICS.map((k) => <li><b>{TOPIC_NAMES[lang][k]}</b><span>{TOPIC_SHORT[lang][k]}</span></li>)}</ul>
+      </>
+    ) : (
+      <>
+        <h3>{t.soonTopicH}</h3>
+        <p class="muted">{t.soonTopicP}</p>
+      </>
+    )}
+  </div>
+</div>

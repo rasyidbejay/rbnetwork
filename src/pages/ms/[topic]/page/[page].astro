@@ -1,0 +1,7 @@
+---
+import Topic from '../../../../views/Topic.astro';
+import { topicMorePaths } from '../../../../lib/routes';
+export const getStaticPaths = () => topicMorePaths('ms');
+const { topic, items, page, totalPages } = Astro.props;
+---
+<Topic lang="ms" topic={topic} items={items} page={page} totalPages={totalPages} />

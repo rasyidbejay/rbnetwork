@@ -1,0 +1,21 @@
+---
+import type { Lang } from '../config/site';
+import { UI } from '../i18n/ui';
+import Lockup from './Lockup.astro';
+interface Props { lang: Lang; alt: { en: string; ms: string }; dark?: boolean }
+const { lang, alt, dark = false } = Astro.props;
+const t = UI[lang];
+---
+<header class:list={['hdr', { dark }]} id="hdr">
+  <div class="wrap hdr-in">
+    <Lockup lang={lang} />
+    <div class="hdr-r">
+      <nav class="langs" aria-label={t.language}>
+        <a href={alt.en} hreflang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
+        <span aria-hidden="true">/</span>
+        <a href={alt.ms} hreflang="ms" lang="ms" aria-current={lang === 'ms' ? 'true' : undefined}>BM</a>
+      </nav>
+      <button class="index-btn" type="button" id="openIx" aria-expanded="false" aria-controls="ixOver"><span>{t.index}</span><span class="g" aria-hidden="true"><i></i></span></button>
+    </div>
+  </div>
+</header>

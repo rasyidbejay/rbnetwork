@@ -1,0 +1,12 @@
+---
+/** A generated picture. Drawn in the browser by src/scripts/viz.ts. */
+interface Props {
+  kind: 'terrain' | 'network' | 'roots' | 'team' | 'footer' | 'lost';
+  seed?: number;
+  big?: boolean;
+  night?: boolean;
+  id?: string;
+}
+const { kind, seed = 1, big = false, night = false, id } = Astro.props;
+---
+<canvas class="viz" id={id} data-viz={kind} data-seed={seed} data-big={big ? '1' : undefined} data-night={night ? '1' : undefined} aria-hidden="true"></canvas>

@@ -1,0 +1,37 @@
+---
+import { SITE, type Lang } from '../config/site';
+import { UI } from '../i18n/ui';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Viz from '../components/Viz.astro';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = UI[lang];
+---
+<BaseLayout lang={lang} title={t.contact} description={t.ctP} alt={{ en: '/contact/', ms: '/ms/contact/' }} hreflang={{ en: '/contact/', ms: '/ms/contact/' }}>
+  <div class="ct">
+    <div class="ct-viz"><Viz kind="roots" seed={21} /><div class="pnl">{t.reply}</div></div>
+    <div class="ct-form">
+      <h1>{t.ctH}</h1>
+      <p class="lede">{t.ctP}</p>
+      <form class="f" id="cform" action={`https://formspree.io/f/${SITE.formspreeId}`} method="POST" novalidate data-sending={t.fSending} data-fail={t.fFail} data-not-ready={t.fNotReady}>
+        <input type="hidden" name="_language" value={lang} />
+        <input type="hidden" name="_subject" value="rbnetwork contact form" />
+        <div class="hp" aria-hidden="true"><label for="f-gotcha">Leave empty</label><input type="text" id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
+        <div class="fr">
+          <div class="fld"><label for="f-name">{t.fName}</label><input id="f-name" name="name" autocomplete="name" /></div>
+          <div class="fld" id="fe"><label for="f-email">{t.fEmail}</label><input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="fe-msg" /><span class="msg" id="fe-msg" hidden>{t.fEmailErr}</span></div>
+        </div>
+        <div class="fld"><label for="f-topic">{t.fTopic}</label><select id="f-topic" name="topic"><option>{t.fO1}</option><option>{t.fO2}</option><option>{t.fO3}</option><option>{t.fO4}</option></select></div>
+        <div class="fld" id="fm"><label for="f-msg">{t.fMsg}</label><textarea id="f-msg" name="message" required aria-describedby="fm-msg"></textarea><span class="msg" id="fm-msg" hidden>{t.fMsgErr}</span></div>
+        <div class="fld" id="fc"><label class="consent"><input type="checkbox" id="f-ok" name="consent" value="yes" required /><span>{t.fConsent}</span></label><span class="msg" hidden>{t.fConsentErr}</span></div>
+        <p class="form-note" id="formNote" role="alert" hidden></p>
+        <div><button class="btn btn-ink" type="submit"><span>{t.fSend}</span><span class="arr" aria-hidden="true">→</span></button></div>
+      </form>
+      <div class="sent" id="sent" hidden>
+        <h2 tabindex="-1">{t.sentH}</h2>
+        <p class="muted">{t.sentP}</p>
+        <div><button class="btn btn-line" type="button" id="again">{t.again}</button></div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

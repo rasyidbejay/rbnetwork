@@ -1,0 +1,84 @@
+---
+import { Font } from 'astro:assets';
+import '../styles/global.css';
+import { SITE, type Lang } from '../config/site';
+import { UI } from '../i18n/ui';
+import { getArticles, topicCounts } from '../lib/articles';
+import Header from '../components/Header.astro';
+import IndexMenu from '../components/IndexMenu.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description?: string;
+  /** Where the language switch points. Pass both, even for pages without a translation. */
+  alt: { en: string; ms: string };
+  /** Set only when a real translation exists, so hreflang tags stay truthful. */
+  hreflang?: { en?: string; ms?: string };
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  jsonLd?: object[];
+  darkHeader?: boolean;
+  noindex?: boolean;
+}
+
+const { lang, title, description = SITE.description, alt, hreflang, ogImage = SITE.defaultOg, ogType = 'website', jsonLd = [], darkHeader = false, noindex = false } = Astro.props;
+const t = UI[lang];
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const fullTitle = title === SITE.name ? SITE.name : `${title} · ${SITE.name}`;
+const ogUrl = new URL(ogImage, SITE.url).href;
+const counts = topicCounts(await getArticles(lang));
+const abs = (p?: string) => (p ? new URL(p, SITE.url).href : undefined);
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script is:inline>
+      try { var t = localStorage.getItem('rbn-theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+    </script>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F6F4EE" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1B1B18" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    {hreflang?.en && <link rel="alternate" hreflang="en" href={abs(hreflang.en)} />}
+    {hreflang?.ms && <link rel="alternate" hreflang="ms" href={abs(hreflang.ms)} />}
+    {hreflang?.en && <link rel="alternate" hreflang="x-default" href={abs(hreflang.en)} />}
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title={`rbnetwork (${lang.toUpperCase()})`} href={new URL(lang === 'en' ? '/rss.xml' : '/ms/rss.xml', SITE.url).href} />
+    <meta property="og:site_name" content="rbnetwork" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={lang === 'ms' ? 'ms_MY' : 'en_GB'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="generator" content={Astro.generator} />
+    <Font cssVariable="--font-instrument-sans" preload />
+    {jsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
+  </head>
+  <body>
+    <a class="skip" href="#main">{t.skip}</a>
+    <Header lang={lang} alt={alt} dark={darkHeader} />
+    <IndexMenu lang={lang} counts={counts} alt={alt} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} alt={alt} />
+    <script>
+      import '../scripts/viz';
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

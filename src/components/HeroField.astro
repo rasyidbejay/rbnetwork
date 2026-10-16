@@ -1,0 +1,39 @@
+---
+import { TOPICS, type Lang, type Topic } from '../config/site';
+import { UI, TOPIC_NAMES, localePath } from '../i18n/ui';
+interface Props { lang: Lang; counts: Record<Topic, number>; newestTopic?: Topic }
+const { lang, counts, newestTopic } = Astro.props;
+const t = UI[lang];
+// Peak height follows how much has been written in each topic, with a floor so the map never goes flat.
+const max = Math.max(1, ...Object.values(counts));
+const heights = Object.fromEntries(TOPICS.map((k) => [k, 0.6 + 0.4 * (counts[k] / max)]));
+---
+<div class="field" id="field" data-heights={JSON.stringify(heights)}>
+  <canvas class="viz" id="heroCanvas" aria-hidden="true"></canvas>
+  {TOPICS.map((k) => (
+    <a class:list={['peak', { top: k === newestTopic }]} href={localePath(lang, `/${k}/`)} data-peak={k}>
+      <span class="nm">{TOPIC_NAMES[lang][k]}</span>
+      {counts[k] > 0 && <span class="pc">{counts[k]} {counts[k] === 1 ? t.article1 : t.articles}</span>}
+      <span class="sym" aria-hidden="true"></span>
+    </a>
+  ))}
+  <span class="scroll-cue" aria-hidden="true">{t.map}</span>
+  <div class="hero-copy">
+    <div class="wrap">
+      <h1 class="hero-title" aria-label={t.heroLabel}>
+        <span class="ln" aria-hidden="true"><span>{t.heroL1}</span></span>
+        <span class="ln" aria-hidden="true"><span>{t.heroL2}</span></span>
+      </h1>
+      <div class="legend" aria-hidden="true">
+        <div class="row"><span class="lg-line"></span><span>{t.lg1}</span></div>
+        <div class="row"><span class="lg-line idx"></span><span>{t.lg2}</span></div>
+        <div class="row"><span class="lg-tri"></span><span><b>{t.lg3a}</b> {t.lg3b}</span></div>
+        {newestTopic && <div class="row"><span class="lg-seed"></span><span><b>{t.lg4a}</b> {t.lg4b}</span></div>}
+      </div>
+      <div class="hero-sub">
+        <p>{t.lead}</p>
+        <a class="btn btn-ink" href="#latest"><span>{t.ctaLatest}</span><span class="arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</div>
