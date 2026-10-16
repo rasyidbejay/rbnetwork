@@ -61,7 +61,7 @@ Each article gets its own generated cover: terrain for SEO, a network for AI Sea
 
 | Setting | Where | What to do |
 | --- | --- | --- |
-| Formspree form ID | `src/config/site.ts`, `formspreeId` | Paste the ID after `formspree.io/f/`. Until then the contact form says it is not connected. |
+| Formspree form ID | `src/config/site.ts`, `formspreeId` | Set to `xjygjlzn`. Change it here if you ever make a new form. |
 | Articles per topic page | `src/config/site.ts`, `perPage` | Default 10. |
 
 ## Deploy
