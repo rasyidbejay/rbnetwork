@@ -3,19 +3,21 @@ import type { Lang } from '../config/site';
 import { UI, localePath } from '../i18n/ui';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Viz from '../components/Viz.astro';
+import Photo from '../components/Photo.astro';
+import { PHOTOS } from '../lib/photos';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = UI[lang];
 const items = [
   { h: t.pr1, p: t.pr1d, kind: 'terrain', seed: 61 },
   { h: t.pr2, p: t.pr2d, kind: 'network', seed: 62 },
-  { h: t.pr3, p: t.pr3d, kind: 'roots', seed: 63 },
+  { h: t.pr3, p: t.pr3d, kind: 'grid', seed: 63 },
   { h: t.pr4, p: t.pr4d, kind: 'terrain', seed: 64 },
 ] as const;
 ---
 <BaseLayout lang={lang} title={t.about} description={t.aboutP} alt={{ en: '/about/', ms: '/ms/about/' }} hreflang={{ en: '/about/', ms: '/ms/about/' }} darkHeader>
   <div class="ab-hero">
-    <Viz kind="team" seed={9} night />
+    <Photo src={PHOTOS.about.src} alt={PHOTOS.about.alt[lang]} overlay="team" seed={9} sizes="100vw" eager />
     <div class="wrap">
       <span class="cap" style="color:var(--night-muted)">{t.about}</span>
       <h1>{t.aboutH}</h1>

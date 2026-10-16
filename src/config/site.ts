@@ -15,10 +15,10 @@ export const TOPICS = ['seo', 'ai-search', 'web-development'] as const;
 export type Topic = (typeof TOPICS)[number];
 
 /** Which generated visual each topic uses, and the seed for its hero. */
-export const TOPIC_VIZ: Record<Topic, { kind: 'terrain' | 'network' | 'roots'; seed: number }> = {
+export const TOPIC_VIZ: Record<Topic, { kind: 'terrain' | 'network' | 'grid'; seed: number }> = {
   seo: { kind: 'terrain', seed: 312 },
   'ai-search': { kind: 'network', seed: 331 },
-  'web-development': { kind: 'roots', seed: 305 },
+  'web-development': { kind: 'grid', seed: 305 },
 };
 
 export const ARTICLE_TYPES = ['news', 'analysis', 'explainer', 'guide'] as const;

@@ -6,6 +6,7 @@ import { getArticles, articleUrl, translationUrl, vizFor, readingMinutes, seedOf
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StoryCard from '../components/StoryCard.astro';
 import Viz from '../components/Viz.astro';
+import Photo from '../components/Photo.astro';
 
 interface Props { lang: Lang; entry: Article }
 const { lang, entry } = Astro.props;
@@ -37,7 +38,7 @@ const jsonLd = [
     dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
     inLanguage: lang,
     mainEntityOfPage: new URL(self, SITE.url).href,
-    image: new URL(SITE.defaultOg, SITE.url).href,
+    image: new URL(d.cover ?? SITE.defaultOg, SITE.url).href,
     articleSection: topicName,
     author: { '@type': 'Organization', name: 'rbnetwork', url: SITE.url },
     publisher: { '@type': 'Organization', name: 'rbnetwork', logo: { '@type': 'ImageObject', url: `${SITE.url}/icon-512.png` } },
@@ -52,10 +53,12 @@ const jsonLd = [
   },
 ];
 ---
-<BaseLayout lang={lang} title={d.title} description={d.description} alt={alt} hreflang={hreflang} ogType="article" jsonLd={jsonLd}>
+<BaseLayout lang={lang} title={d.title} description={d.description} alt={alt} hreflang={hreflang} ogType="article" ogImage={d.cover} jsonLd={jsonLd}>
   <div class="progress" id="progress" aria-hidden="true"><i></i></div>
   <article>
-    <div class="a-hero"><Viz kind={v.kind} seed={v.seed} big /><span class="tag cap">{t.coverNote}</span></div>
+    <div class="a-hero">{d.cover
+      ? <><Photo src={d.cover} alt={d.coverAlt ?? ''} overlay={v.kind} seed={v.seed} eager />{d.coverCredit && <span class="tag cap">{t.photoBy}: {d.coverCredit}</span>}</>
+      : <><Viz kind={v.kind} seed={v.seed} big /><span class="tag cap">{t.coverNote}</span></>}</div>
     <div class="wrap a-head">
       <header class="a-card">
         <nav class="crumbs" aria-label="Breadcrumb"><ol>

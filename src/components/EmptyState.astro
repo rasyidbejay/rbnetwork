@@ -1,13 +1,14 @@
 ---
 import { TOPICS, type Lang } from '../config/site';
 import { UI, TOPIC_NAMES, TOPIC_SHORT } from '../i18n/ui';
-import Viz from './Viz.astro';
+import Photo from './Photo.astro';
+import { PHOTOS } from '../lib/photos';
 interface Props { lang: Lang; variant?: 'site' | 'topic'; seed?: number }
 const { lang, variant = 'site', seed = 77 } = Astro.props;
 const t = UI[lang];
 ---
 <div class="empty">
-  <Viz kind="roots" seed={seed} />
+  <Photo src={PHOTOS.empty.src} alt={PHOTOS.empty.alt[lang]} overlay="grid" seed={seed} sizes="100vw" />
   <div class="pnl">
     <span class="cap">{t.soonK}</span>
     {variant === 'site' ? (

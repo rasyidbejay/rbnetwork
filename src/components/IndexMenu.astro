@@ -17,7 +17,7 @@ const t = UI[lang];
         <li><a href={localePath(lang, `/${k}/`)} data-pv-kind={TOPIC_VIZ[k].kind} data-pv-seed={TOPIC_VIZ[k].seed}><span>{TOPIC_NAMES[lang][k]}</span>{counts[k] > 0 && <span class="n">{counts[k]}</span>}</a></li>
       ))}
       <li><a href={localePath(lang, '/about/')} data-pv-kind="team" data-pv-seed="9"><span>{t.about}</span></a></li>
-      <li><a href={localePath(lang, '/contact/')} data-pv-kind="roots" data-pv-seed="21"><span>{t.contact}</span></a></li>
+      <li><a href={localePath(lang, '/contact/')} data-pv-kind="grid" data-pv-seed="21"><span>{t.contact}</span></a></li>
     </ul>
     <div class="ix-prev" aria-hidden="true"><canvas class="viz" id="ixCanvas"></canvas><span class="cap" id="ixCap"></span></div>
   </div>

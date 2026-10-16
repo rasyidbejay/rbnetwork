@@ -2,14 +2,15 @@
 import { SITE, type Lang } from '../config/site';
 import { UI } from '../i18n/ui';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Viz from '../components/Viz.astro';
+import Photo from '../components/Photo.astro';
+import { PHOTOS } from '../lib/photos';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = UI[lang];
 ---
 <BaseLayout lang={lang} title={t.contact} description={t.ctP} alt={{ en: '/contact/', ms: '/ms/contact/' }} hreflang={{ en: '/contact/', ms: '/ms/contact/' }}>
   <div class="ct">
-    <div class="ct-viz"><Viz kind="roots" seed={21} /><div class="pnl">{t.reply}</div></div>
+    <div class="ct-viz"><Photo src={PHOTOS.contact.src} alt={PHOTOS.contact.alt[lang]} overlay="grid" seed={21} sizes="(min-width: 960px) 42vw, 100vw" eager /><div class="pnl">{t.reply}</div></div>
     <div class="ct-form">
       <h1>{t.ctH}</h1>
       <p class="lede">{t.ctP}</p>

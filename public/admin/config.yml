@@ -56,6 +56,9 @@ collections:
       - { name: pubDate, label: Published, widget: datetime, i18n: duplicate }
       - { name: updatedDate, label: "Last updated (leave empty if never)", widget: datetime, required: false, i18n: duplicate }
       - { name: draft, label: "Draft (hidden from the live site)", widget: boolean, default: true, i18n: duplicate }
+      - { name: cover, label: "Cover photo (optional; without one the article gets a generated drawing)", widget: image, required: false, i18n: duplicate }
+      - { name: coverAlt, label: "Cover photo description (for screen readers and search)", widget: string, required: false, i18n: true }
+      - { name: coverCredit, label: "Cover photo credit (e.g. photographer name)", widget: string, required: false, i18n: duplicate }
       - { name: summary, label: "In short (2 to 4 key points)", widget: list, required: false, i18n: true, field: { name: point, label: Point, widget: string } }
       - name: sources
         label: Sources
