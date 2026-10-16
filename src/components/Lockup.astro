@@ -1,0 +1,10 @@
+---
+import type { Lang } from '../config/site';
+import { localePath } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+---
+<a class="lockup" href={localePath(lang, '/')} aria-label="rbnetwork home">
+  <svg viewBox="0 0 100 100" aria-hidden="true"><rect class="mk-l" x="18" y="42" width="12" height="40" rx="6"/><path class="mk-s" d="M24 56 Q24 44 30 44" stroke-width="12" stroke-linecap="round" fill="none"/><circle class="mk-seed" cx="44" cy="44" r="6"/><rect class="mk-l" x="52" y="18" width="12" height="64" rx="6"/><circle class="mk-s" cx="72" cy="62" r="14" stroke-width="12" fill="none"/></svg>
+  <span class="wm"><b>rb</b><span>network</span></span>
+</a>

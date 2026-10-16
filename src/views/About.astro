@@ -1,0 +1,36 @@
+---
+import type { Lang } from '../config/site';
+import { UI, localePath } from '../i18n/ui';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Viz from '../components/Viz.astro';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = UI[lang];
+const items = [
+  { h: t.pr1, p: t.pr1d, kind: 'terrain', seed: 61 },
+  { h: t.pr2, p: t.pr2d, kind: 'network', seed: 62 },
+  { h: t.pr3, p: t.pr3d, kind: 'roots', seed: 63 },
+  { h: t.pr4, p: t.pr4d, kind: 'terrain', seed: 64 },
+] as const;
+---
+<BaseLayout lang={lang} title={t.about} description={t.aboutP} alt={{ en: '/about/', ms: '/ms/about/' }} hreflang={{ en: '/about/', ms: '/ms/about/' }} darkHeader>
+  <div class="ab-hero">
+    <Viz kind="team" seed={9} night />
+    <div class="wrap">
+      <span class="cap" style="color:var(--night-muted)">{t.about}</span>
+      <h1>{t.aboutH}</h1>
+      <p>{t.aboutP}</p>
+    </div>
+  </div>
+  <section class="wrap sec" aria-labelledby="how-h">
+    <div class="sec-h"><h2 id="how-h">{t.howH}</h2><p>{t.howP}</p></div>
+    <div class="principles">
+      {items.map((i) => (
+        <div class="pr"><div class="vz"><Viz kind={i.kind} seed={i.seed} /></div><div class="tx"><h3>{i.h}</h3><p>{i.p}</p></div></div>
+      ))}
+    </div>
+  </section>
+  <div class="wrap sec" style="padding-top:0">
+    <div class="tip"><h2>{t.tipH}</h2><a class="btn" href={localePath(lang, '/contact/')}><span>{t.contact}</span><span class="arr" aria-hidden="true">→</span></a></div>
+  </div>
+</BaseLayout>

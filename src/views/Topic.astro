@@ -1,0 +1,56 @@
+---
+import { SITE, TOPIC_VIZ, type Lang, type Topic } from '../config/site';
+import { UI, TOPIC_NAMES, TOPIC_DESC, localePath } from '../i18n/ui';
+import type { Article } from '../lib/articles';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StoryCard from '../components/StoryCard.astro';
+import EmptyState from '../components/EmptyState.astro';
+import Viz from '../components/Viz.astro';
+
+interface Props { lang: Lang; topic: Topic; items: Article[]; page: number; totalPages: number }
+const { lang, topic, items, page, totalPages } = Astro.props;
+const t = UI[lang];
+const name = TOPIC_NAMES[lang][topic];
+const pagePath = (l: Lang, n: number) => localePath(l, n <= 1 ? `/${topic}/` : `/${topic}/page/${n}/`);
+const alt = { en: pagePath('en', 1), ms: pagePath('ms', 1) };
+const self = { en: pagePath('en', page), ms: pagePath('ms', page) };
+const title = page > 1 ? `${name}, ${t.pageOf.toLowerCase()} ${page}` : name;
+const jsonLd = [{
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t.home, item: new URL(localePath(lang, '/'), SITE.url).href },
+    { '@type': 'ListItem', position: 2, name, item: new URL(pagePath(lang, 1), SITE.url).href },
+  ],
+}];
+---
+<BaseLayout lang={lang} title={title} description={TOPIC_DESC[lang][topic]} alt={alt} hreflang={self} jsonLd={jsonLd}>
+  <div class="t-hero">
+    <Viz kind={TOPIC_VIZ[topic].kind} seed={TOPIC_VIZ[topic].seed} big />
+    <div class="pnl"><div class="wrap"><div class="card">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href={localePath(lang, '/')}>{t.home}</a></li><li><span>{t.topics}</span></li></ol></nav>
+      <h1>{name}</h1>
+      <p>{TOPIC_DESC[lang][topic]}</p>
+    </div></div></div>
+  </div>
+
+  <section class="wrap sec" aria-label={name}>
+    {items.length === 0 ? (
+      <EmptyState lang={lang} variant="topic" seed={41} />
+    ) : (
+      <>
+        <div class="grid3">{items.map((a) => <StoryCard a={a} lang={lang} showDek />)}</div>
+        {totalPages > 1 && (
+          <nav class="pager" aria-label={t.pageOf}>
+            {page > 1 ? <a class="textlink" href={pagePath(lang, page - 1)}>← {t.newer}</a> : <span class="textlink off">← {t.newer}</span>}
+            <div class="pages">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <a href={pagePath(lang, n)} aria-current={n === page ? 'page' : undefined}>{n}</a>
+              ))}
+            </div>
+            {page < totalPages ? <a class="textlink" href={pagePath(lang, page + 1)}>{t.older} →</a> : <span class="textlink off">{t.older} →</span>}
+          </nav>
+        )}
+      </>
+    )}
+  </section>
+</BaseLayout>

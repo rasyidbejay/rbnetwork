@@ -1,0 +1,68 @@
+# Sveltia CMS settings for rbnetwork.my
+# Open https://rbnetwork.my/admin/ and sign in with GitHub (or a GitHub access token).
+# Every article you publish here becomes a commit on GitHub, and Vercel rebuilds the site.
+
+backend:
+  name: github
+  repo: rasyidbejay/rbnetwork
+  branch: main
+
+site_url: https://rbnetwork.my
+display_url: https://rbnetwork.my
+logo_url: /favicon.svg
+
+media_folder: public/images/articles
+public_folder: /images/articles
+
+# English and Malay versions share one slug and sit in en/ and ms/ folders.
+i18n:
+  structure: multiple_folders
+  locales: [en, ms]
+  default_locale: en
+
+collections:
+  - name: articles
+    label: Articles
+    label_singular: Article
+    folder: src/content/articles
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    i18n: true
+    summary: "{{title}} ({{topic}})"
+    sortable_fields: [pubDate, title, topic]
+    fields:
+      - { name: title, label: Title, widget: string, i18n: true }
+      - { name: description, label: "Standfirst (one or two sentences, also used for search results)", widget: text, i18n: true }
+      - name: topic
+        label: Topic
+        widget: select
+        i18n: duplicate
+        options:
+          - { label: SEO, value: seo }
+          - { label: AI Search, value: ai-search }
+          - { label: Web Development, value: web-development }
+      - name: type
+        label: Type
+        widget: select
+        i18n: duplicate
+        default: analysis
+        options:
+          - { label: News, value: news }
+          - { label: Analysis, value: analysis }
+          - { label: Explainer, value: explainer }
+          - { label: Guide, value: guide }
+      - { name: pubDate, label: Published, widget: datetime, i18n: duplicate }
+      - { name: updatedDate, label: "Last updated (leave empty if never)", widget: datetime, required: false, i18n: duplicate }
+      - { name: draft, label: "Draft (hidden from the live site)", widget: boolean, default: true, i18n: duplicate }
+      - { name: summary, label: "In short (2 to 4 key points)", widget: list, required: false, i18n: true, field: { name: point, label: Point, widget: string } }
+      - name: sources
+        label: Sources
+        widget: list
+        required: false
+        i18n: true
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: url, label: Link, widget: string }
+      - { name: body, label: Article, widget: markdown, i18n: true }

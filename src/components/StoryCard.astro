@@ -1,0 +1,16 @@
+---
+import type { Lang } from '../config/site';
+import { TOPIC_NAMES, TYPE_NAMES, UI, formatDate } from '../i18n/ui';
+import { articleUrl, vizFor, readingMinutes, type Article } from '../lib/articles';
+import Viz from './Viz.astro';
+interface Props { a: Article; lang: Lang; variant?: 'lead' | 'side' | 'plain'; showDek?: boolean; headingLevel?: 2 | 3 }
+const { a, lang, variant = 'plain', showDek = false } = Astro.props;
+const v = vizFor(a);
+const cls = variant === 'lead' ? 's-lead' : variant === 'side' ? 's-b' : '';
+---
+<a class:list={['story', cls]} href={articleUrl(a)}>
+  <div class="pic"><Viz kind={v.kind} seed={v.seed} /><span class="kind">{TYPE_NAMES[lang][a.data.type]}</span></div>
+  <div class="meta"><span class="tp">{TOPIC_NAMES[lang][a.data.topic]}</span><time datetime={a.data.pubDate.toISOString()}>{formatDate(lang, a.data.pubDate)}</time><span>{readingMinutes(a.body)} {UI[lang].minRead}</span></div>
+  <h3>{a.data.title}</h3>
+  {(showDek || variant === 'lead') && <p class="dek">{a.data.description}</p>}
+</a>

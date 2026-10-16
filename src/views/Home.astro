@@ -1,0 +1,63 @@
+---
+import { SITE, type Lang } from '../config/site';
+import { UI, TOPIC_NAMES, formatDate } from '../i18n/ui';
+import { getArticles, topicCounts, articleUrl, vizFor } from '../lib/articles';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroField from '../components/HeroField.astro';
+import FieldGuide from '../components/FieldGuide.astro';
+import TopicTiles from '../components/TopicTiles.astro';
+import StoryCard from '../components/StoryCard.astro';
+import EmptyState from '../components/EmptyState.astro';
+import Viz from '../components/Viz.astro';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = UI[lang];
+const list = await getArticles(lang);
+const counts = topicCounts(list);
+const [lead, b1, b2, ...rest] = list;
+const strip = rest.slice(0, 3);
+
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'Organization', name: 'rbnetwork', url: SITE.url, logo: `${SITE.url}/icon-512.png` },
+  { '@context': 'https://schema.org', '@type': 'WebSite', name: 'rbnetwork', url: SITE.url, inLanguage: lang, description: t.lead },
+];
+---
+<BaseLayout lang={lang} title="rbnetwork" description={t.lead} alt={{ en: '/', ms: '/ms/' }} hreflang={{ en: '/', ms: '/ms/' }} jsonLd={jsonLd}>
+  <HeroField lang={lang} counts={counts} newestTopic={lead?.data.topic} />
+
+  <section class="wrap sec" id="latest" aria-labelledby="latest-h">
+    <div class="sec-h"><h2 id="latest-h">{t.latest}</h2><p>{t.latestP}</p></div>
+    {list.length === 0 ? (
+      <EmptyState lang={lang} />
+    ) : (
+      <>
+        <div class="mosaic">
+          <StoryCard a={lead} lang={lang} variant="lead" />
+          {b1 && <StoryCard a={b1} lang={lang} variant="side" />}
+          {b2 && <StoryCard a={b2} lang={lang} variant="side" />}
+        </div>
+        {strip.length > 0 && (
+          <ul class="strip">
+            {strip.map((a) => {
+              const v = vizFor(a);
+              return (
+                <li><a href={articleUrl(a)}>
+                  <span class="th"><Viz kind={v.kind} seed={v.seed + 100} /></span>
+                  <span style="display:grid;gap:6px"><span class="cap">{TOPIC_NAMES[lang][a.data.topic]} · {formatDate(lang, a.data.pubDate)}</span><h3>{a.data.title}</h3></span>
+                </a></li>
+              );
+            })}
+          </ul>
+        )}
+      </>
+    )}
+  </section>
+
+  <FieldGuide lang={lang} />
+
+  <section class="wrap sec" aria-labelledby="topics-h">
+    <div class="sec-h"><h2 id="topics-h">{t.topics}</h2><p>{t.topicsP}</p></div>
+    <TopicTiles lang={lang} counts={counts} />
+  </section>
+</BaseLayout>

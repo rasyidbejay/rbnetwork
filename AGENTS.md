@@ -20,3 +20,10 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+## Project notes
+
+- Design: "Living field". Brand tokens are in `src/styles/global.css`; do not add gradients, shadows, a second accent colour or font weight 700.
+- Interface text lives in `src/i18n/ui.ts` (English and Malay). Page designs live in `src/views/` and are shared by `src/pages/` and `src/pages/ms/`.
+- Articles: `src/content/articles/<en|ms>/<slug>.md`, same slug in both languages. Schema in `src/content.config.ts`.
+- The CMS config is `public/admin/config.yml`; keep its fields in step with the schema.

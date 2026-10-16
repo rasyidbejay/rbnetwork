@@ -1,0 +1,64 @@
+---
+import type { Lang } from '../config/site';
+import { UI } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = UI[lang];
+const tabs = [
+  { k: 'SEO', label: t.g0t, h: t.g0h, p: t.g0p, rows: t.g0r },
+  { k: 'AEO', label: t.g1t, h: t.g1h, p: t.g1p, rows: t.g1r },
+  { k: 'GEO', label: t.g2t, h: t.g2h, p: t.g2p, rows: t.g2r },
+];
+const widths = [86, 72, 90, 64, 78, 70, 82, 60];
+---
+<section class="guide" id="guide" aria-labelledby="gh">
+  <div class="wrap sec">
+    <div class="sec-h"><h2 id="gh">{t.guideH}</h2><p>{t.guideP}</p></div>
+    <div class="g-tabs" role="tablist">
+      {tabs.map((g, i) => (
+        <button class="g-tab" role="tab" id={`gt${i}`} aria-controls={`gp${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}><b>{g.k}</b><span>{g.label}</span><span class="bar" aria-hidden="true"></span></button>
+      ))}
+    </div>
+    <div class="g-stage">
+      <div>
+        {tabs.map((g, i) => (
+          <div class="g-copy" hidden={i !== 0}>
+            <h3>{g.h}</h3>
+            <p>{g.p}</p>
+            <dl>
+              <div><dt>{t.gWin}</dt><dd>{g.rows[0]}</dd></div>
+              <div><dt>{t.gSignal}</dt><dd>{g.rows[1]}</dd></div>
+              <div><dt>{t.gMeasure}</dt><dd>{g.rows[2]}</dd></div>
+            </dl>
+          </div>
+        ))}
+      </div>
+      <div class="g-viz">
+        <span class="flag illus">{t.illus}</span>
+        <div class="g-panel live" id="gp0" role="tabpanel" aria-labelledby="gt0">
+          <span class="cap">{t.g0c}</span>
+          <div class="serp" aria-hidden="true">
+            {widths.map((w, i) => (
+              <div class:list={['r', { you: i === 6 }]} style={`top:${i * 46}px`}>
+                <span class="n">{i + 1}</span>
+                <span class="b" style={`width:${w}%`}>{i === 6 && <span>{t.g0you}</span>}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="g-panel" id="gp1" role="tabpanel" aria-labelledby="gt1" hidden>
+          <span class="q">{t.g1q}</span>
+          <div class="ans"><p class="big"><mark>{t.g1a1}</mark> {t.g1a2}</p><span class="src"><i></i><span>{t.g1s}</span></span></div>
+        </div>
+        <div class="g-panel" id="gp2" role="tabpanel" aria-labelledby="gt2" hidden>
+          <span class="q">{t.g2q}</span>
+          <div class="ans">
+            <div class="lines" aria-hidden="true"><span style="width:92%"></span><span style="width:84%"></span><span style="width:96%"></span><span style="width:58%"></span></div>
+            <div class="cites"><span>site-a.com</span><span class="you"><i></i><span>{t.g2y}</span></span><span>site-c.org</span></div>
+            <p class="desc"><span class="muted">{t.g2d1}</span> <span>{t.g2d2}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
