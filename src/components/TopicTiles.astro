@@ -1,7 +1,8 @@
 ---
 import { TOPIC_VIZ, type Lang, type Topic } from '../config/site';
 import { UI, TOPIC_NAMES, localePath } from '../i18n/ui';
-import Viz from './Viz.astro';
+import Photo from './Photo.astro';
+import { PHOTOS, TOPIC_PHOTO } from '../lib/photos';
 interface Props { lang: Lang; counts: Record<Topic, number> }
 const { lang, counts } = Astro.props;
 const t = UI[lang];
@@ -10,7 +11,7 @@ const order: Topic[] = ['ai-search', 'seo', 'web-development'];
 <div class="tiles">
   {order.map((k) => (
     <a class="tile" href={localePath(lang, `/${k}/`)}>
-      <Viz kind={TOPIC_VIZ[k].kind} seed={TOPIC_VIZ[k].seed - 300 + 7} />
+      <Photo src={PHOTOS[TOPIC_PHOTO[k]].src} alt={PHOTOS[TOPIC_PHOTO[k]].alt[lang]} overlay={TOPIC_VIZ[k].kind} seed={TOPIC_VIZ[k].seed - 300 + 7} sizes={k === 'ai-search' ? '(min-width: 960px) 55vw, 100vw' : '(min-width: 960px) 40vw, 100vw'} />
       <div class="pnl">
         <div>{counts[k] > 0 && <span class="cap">{counts[k]} {counts[k] === 1 ? t.article1 : t.articles}</span>}<h3>{TOPIC_NAMES[lang][k]}</h3></div>
         <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>

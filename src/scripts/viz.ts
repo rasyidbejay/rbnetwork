@@ -3,7 +3,7 @@
  * is drawn here, in the brand colours of the current theme. The same seed always draws the same picture.
  */
 
-type Opts = { big?: boolean; night?: boolean };
+type Opts = { big?: boolean; night?: boolean; overlay?: boolean };
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function rng(a: number) {
@@ -38,6 +38,11 @@ function colours() {
     paper: g('--paper'), ink: g('--ink'), muted: g('--ink-muted'), line: g('--hairline'), sunk: g('--surface-sunken'),
     terra: g('--terracotta'), night: g('--night'), nfg: g('--night-fg'), nmut: g('--night-muted'), nline: g('--night-line'),
   };
+}
+
+/** Line colours for drawing on top of a photo: light strokes, no background. */
+function overlayColours() {
+  return { ink: 'rgba(246,244,238,0.9)', muted: 'rgba(246,244,238,0.55)', line: 'rgba(246,244,238,0.16)' };
 }
 
 function fit(cv: HTMLCanvasElement) {
@@ -92,10 +97,11 @@ function contours(ctx: CanvasRenderingContext2D, w: number, h: number, H: (x: nu
   return { x: (mi % nx) * cs, y: Math.floor(mi / nx) * cs };
 }
 
-function drawTerrain(cv: HTMLCanvasElement, seed: number) {
+function drawTerrain(cv: HTMLCanvasElement, seed: number, o: Opts = {}) {
   const f = fit(cv); if (!f) return;
   const { ctx, w, h } = f, c = colours(), r = rng(seed), N = makeNoise(seed);
-  ctx.fillStyle = c.sunk; ctx.fillRect(0, 0, w, h);
+  const ov = o.overlay ? overlayColours() : null;
+  if (ov) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = c.sunk; ctx.fillRect(0, 0, w, h); }
   const pk: number[][] = [];
   const n = 2 + ((r() * 2) | 0);
   for (let i = 0; i < n; i++) pk.push([w * (0.2 + r() * 0.6), h * (0.2 + r() * 0.6), 0.5 + r() * 0.5, Math.min(w, h) * (0.18 + r() * 0.2)]);
@@ -105,15 +111,17 @@ function drawTerrain(cv: HTMLCanvasElement, seed: number) {
     for (const p of pk) v += p[2] * gauss(x, y, p[0], p[1], p[3]);
     return v * 0.85 + (N(x * sc, y * sc) * 0.5 + N(x * sc * 2.3, y * sc * 2.3) * 0.22) * 0.55 + 0.18;
   };
-  const top = contours(ctx, w, h, H, { cell: Math.max(4, Math.min(w, h) / 70), levels: 16, lo: 0.05, hi: 1.05, weak: c.muted, strong: c.ink, ww: 0.7, sw: 1.4 });
+  const top = contours(ctx, w, h, H, { cell: Math.max(4, Math.min(w, h) / 70), levels: 16, lo: 0.05, hi: 1.05, weak: ov ? ov.line : c.muted, strong: ov ? ov.muted : c.ink, ww: 0.7, sw: 1.4 });
   ctx.fillStyle = c.terra; ctx.beginPath(); ctx.arc(top.x, top.y, Math.max(5, Math.min(w, h) * 0.028), 0, 7); ctx.fill();
 }
 
 function drawNetwork(cv: HTMLCanvasElement, seed: number, o: Opts = {}) {
   const f = fit(cv); if (!f) return;
   const { ctx, w, h } = f, c = colours(), r = rng(seed);
-  const bg = o.night ? c.night : c.sunk, ink = o.night ? c.nfg : c.ink, mut = o.night ? c.nmut : c.muted, ln = o.night ? c.nline : c.line;
-  ctx.fillStyle = bg; ctx.fillRect(0, 0, w, h);
+  const ov = o.overlay ? overlayColours() : null;
+  const bg = o.night ? c.night : c.sunk;
+  const ink = ov ? ov.ink : o.night ? c.nfg : c.ink, mut = ov ? ov.muted : o.night ? c.nmut : c.muted, ln = ov ? ov.line : o.night ? c.nline : c.line;
+  if (ov) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = bg; ctx.fillRect(0, 0, w, h); }
   const n = o.big ? 70 : Math.min(60, Math.round(18 + (w * h) / 9000));
   const pad = Math.min(w, h) * 0.08, pts: { x: number; y: number; s: number }[] = [];
   for (let i = 0; i < n; i++) {
@@ -198,10 +206,43 @@ function drawRoots(cv: HTMLCanvasElement, seed: number) {
   if (deep) { ctx.fillStyle = c.terra; ctx.beginPath(); ctx.arc(deep[0], deep[1], Math.max(6, base * 0.026), 0, 7); ctx.fill(); }
 }
 
-function drawTeam(cv: HTMLCanvasElement, seed: number) {
+/** Web development: a page wireframe on a layout grid. */
+function drawGrid(cv: HTMLCanvasElement, seed: number, o: Opts = {}) {
   const f = fit(cv); if (!f) return;
   const { ctx, w, h } = f, c = colours(), r = rng(seed);
-  ctx.fillStyle = c.night; ctx.fillRect(0, 0, w, h);
+  const ov = o.overlay ? overlayColours() : null;
+  const ink = ov ? ov.ink : c.ink, mut = ov ? ov.muted : c.muted, ln = ov ? ov.line : c.line;
+  if (ov) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = c.sunk; ctx.fillRect(0, 0, w, h); }
+  const cols = w < 500 ? 6 : 12, pad = Math.max(16, w * 0.06), gw = w - pad * 2, cw = gw / cols, base = Math.min(w, h);
+  ctx.strokeStyle = ln; ctx.lineWidth = 1;
+  for (let i = 0; i <= cols; i++) { const x = Math.round(pad + i * cw) + 0.5; ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+  const row = Math.max(14, h / 18);
+  for (let y = row; y < h; y += row) { ctx.beginPath(); ctx.moveTo(0, Math.round(y) + 0.5); ctx.lineTo(w, Math.round(y) + 0.5); ctx.stroke(); }
+  const snapX = (n: number) => pad + Math.round(n) * cw;
+  const box = (c0: number, c1: number, y: number, hh: number, rad = 6) => { const x = snapX(c0), ww = snapX(c1) - x; ctx.beginPath(); ctx.roundRect(x, y, ww, hh, rad); ctx.stroke(); return { x, y, w: ww, h: hh }; };
+  const boxInk = ov ? ov.muted : ink;
+  ctx.lineWidth = Math.max(1.5, base * 0.006); ctx.strokeStyle = boxInk;
+  let y = h * 0.1;
+  box(0, cols, y, row * 1.2, 8);
+  ctx.fillStyle = boxInk; ctx.beginPath(); ctx.arc(snapX(0) + row * 0.6, y + row * 0.6, row * 0.22, 0, 7); ctx.fill();
+  y += row * 2;
+  const heroCols = Math.round(cols * (0.55 + r() * 0.2));
+  const hero = box(0, heroCols, y, row * (3 + Math.round(r() * 2)), 10);
+  ctx.strokeStyle = ov ? ov.line : mut; ctx.lineWidth = Math.max(2, base * 0.012); ctx.lineCap = 'round';
+  for (let i = 0; i < 3; i++) { const ly = hero.y + row * (0.8 + i * 0.8); ctx.beginPath(); ctx.moveTo(hero.x + row * 0.6, ly); ctx.lineTo(hero.x + hero.w * (0.75 - i * 0.18), ly); ctx.stroke(); }
+  ctx.lineWidth = Math.max(1.5, base * 0.006); ctx.strokeStyle = boxInk;
+  box(heroCols, cols, y, hero.h, 10);
+  y += hero.h + row;
+  const n = cols === 12 ? 3 : 2, span = cols / n, cards: { x: number; y: number; w: number; h: number }[] = [];
+  for (let i = 0; i < n; i++) cards.push(box(i * span, (i + 1) * span, y, Math.min(row * 4, h - y - row), 8));
+  const target = cards[Math.floor(r() * cards.length)];
+  ctx.fillStyle = c.terra; ctx.beginPath(); ctx.arc(target.x + target.w * 0.82, target.y + target.h * 0.3, Math.max(6, base * 0.026), 0, 7); ctx.fill();
+}
+
+function drawTeam(cv: HTMLCanvasElement, seed: number, o: Opts = {}) {
+  const f = fit(cv); if (!f) return;
+  const { ctx, w, h } = f, c = colours(), r = rng(seed);
+  if (o.overlay) ctx.clearRect(0, 0, w, h); else { ctx.fillStyle = c.night; ctx.fillRect(0, 0, w, h); }
   const m = w < 760, cx = m ? w * 0.5 : w * 0.68, cy = m ? h * 0.26 : h * 0.44, rx = m ? w * 0.4 : w * 0.24, ry = m ? h * 0.17 : h * 0.3;
   const hubs = m ? [[w * 0.42, h * 0.18], [w * 0.66, h * 0.3], [w * 0.38, h * 0.34]] : [[w * 0.62, h * 0.28], [w * 0.82, h * 0.5], [w * 0.56, h * 0.6]];
   const ppl: number[][] = [];
@@ -240,14 +281,14 @@ function drawLost(cv: HTMLCanvasElement) {
 }
 
 const DRAW: Record<string, (cv: HTMLCanvasElement, seed: number, o?: Opts) => void> = {
-  terrain: drawTerrain, network: drawNetwork, roots: drawRoots, team: drawTeam,
+  terrain: drawTerrain, network: drawNetwork, roots: drawRoots, team: drawTeam, grid: drawGrid,
   footer: (cv) => drawFooter(cv), lost: (cv) => drawLost(cv),
 };
 
 export function paint(cv: HTMLCanvasElement) {
   const k = cv.dataset.viz || '';
   if (!DRAW[k] || !cv.offsetParent) return;
-  DRAW[k](cv, Number(cv.dataset.seed) || 1, { big: cv.dataset.big === '1', night: cv.dataset.night === '1' });
+  DRAW[k](cv, Number(cv.dataset.seed) || 1, { big: cv.dataset.big === '1', night: cv.dataset.night === '1', overlay: cv.dataset.overlay === '1' });
 }
 
 export function paintAll(root: ParentNode = document) {

@@ -16,6 +16,10 @@ const articles = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    /** Optional cover photo, e.g. /images/articles/my-photo.jpg. Without one, the article gets a generated drawing. */
+    cover: z.string().optional(),
+    coverAlt: z.string().optional(),
+    coverCredit: z.string().optional(),
     summary: z.array(z.string()).default([]),
     sources: z.array(z.object({ title: z.string(), url: z.string().url() })).default([]),
   }),
