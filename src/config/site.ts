@@ -5,7 +5,7 @@ export const SITE = {
   defaultOg: '/og-default.png',
   perPage: 10,
   // Paste the ID from your Formspree form (the part after formspree.io/f/).
-  formspreeId: 'YOUR_FORM_ID',
+  formspreeId: 'xjygjlzn',
 };
 
 export const LANGS = ['en', 'ms'] as const;
