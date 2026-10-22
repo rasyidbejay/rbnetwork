@@ -5,6 +5,9 @@ topic: ai-search
 type: analysis
 pubDate: 2026-10-23T01:00:00.000Z
 draft: true
+cover: /images/articles/google-ai-search-redesign-malaysia.jpg
+coverAlt: Kanta pembesar dipegang di atas papan kekunci komputer riba
+coverCredit: Agence Olloweb di Unsplash
 summary:
   - Pada 19 Mei 2026 Google mula melancarkan kotak carian berasaskan AI di mana-mana AI Mode tersedia, dan menjadikan Gemini 3.5 Flash model lalai.
   - Hantaran Google tidak menyebut Malaysia, tetapi AI Mode menyokong bahasa Melayu, jadi pengguna di Malaysia besar kemungkinan termasuk dalam skopnya.

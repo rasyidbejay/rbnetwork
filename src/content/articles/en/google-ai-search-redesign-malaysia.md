@@ -5,6 +5,9 @@ topic: ai-search
 type: analysis
 pubDate: 2026-10-23T01:00:00.000Z
 draft: true
+cover: /images/articles/google-ai-search-redesign-malaysia.jpg
+coverAlt: A magnifying glass held over a laptop keyboard
+coverCredit: Agence Olloweb on Unsplash
 summary:
   - On 19 May 2026 Google began rolling out an AI-powered search box wherever AI Mode is available, and made Gemini 3.5 Flash its default model.
   - Google's post does not name Malaysia, but AI Mode supports Malay, so Malaysian searchers are very likely in scope.
