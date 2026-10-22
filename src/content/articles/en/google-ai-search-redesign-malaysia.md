@@ -4,7 +4,8 @@ description: Google began rolling out a redesigned AI search box in May. Here is
 topic: ai-search
 type: analysis
 pubDate: 2026-10-23T01:00:00.000Z
-draft: true
+updatedDate: ''
+draft: false
 cover: /images/articles/google-ai-search-redesign-malaysia.jpg
 coverAlt: A magnifying glass held over a laptop keyboard
 coverCredit: Agence Olloweb on Unsplash

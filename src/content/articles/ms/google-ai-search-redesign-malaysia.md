@@ -4,7 +4,8 @@ description: Google mula melancarkan kotak carian AI baharu pada Mei. Inilah per
 topic: ai-search
 type: analysis
 pubDate: 2026-10-23T01:00:00.000Z
-draft: true
+updatedDate: ''
+draft: false
 cover: /images/articles/google-ai-search-redesign-malaysia.jpg
 coverAlt: Kanta pembesar dipegang di atas papan kekunci komputer riba
 coverCredit: Agence Olloweb di Unsplash
