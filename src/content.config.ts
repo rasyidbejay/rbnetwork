@@ -14,7 +14,8 @@ const articles = defineCollection({
     topic: z.enum(['seo', 'ai-search', 'web-development']),
     type: z.enum(['news', 'analysis', 'explainer', 'guide']).default('analysis'),
     pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
+    /** The CMS saves an empty "Last updated" as '', so treat empty values as "no date". */
+    updatedDate: z.preprocess((v) => (v === '' || v === null ? undefined : v), z.coerce.date().optional()),
     draft: z.boolean().default(false),
     /** Optional cover photo, e.g. /images/articles/my-photo.jpg. Without one, the article gets a generated drawing. */
     cover: z.string().optional(),
