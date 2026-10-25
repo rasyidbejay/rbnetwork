@@ -140,7 +140,7 @@ Google berkata "semua bahasa", jadi bahasa Melayu diliputi oleh kenyataannya sen
 
 Panduan Google untuk menyiasat penurunan trafik menyenaraikan punca biasa: kemas kini algoritma, masalah teknikal, masalah keselamatan, masalah spam, musim dan perpindahan tapak. Ia mencadangkan agar anda membandingkan julat tarikh dalam laporan Performance di Search Console, menyemak setiap tab (pertanyaan, halaman, negara, peranti) dan melihat ke belakang 16 bulan untuk mencari corak tahunan. Ia juga menyatakan bahawa pergerakan kecil, seperti dari kedudukan 2 ke 4, ialah turun naik biasa.
 
-Satu peringatan tentang kesegaran data. Pada 11 Oktober, Search Engine Roundtable mendapati laporan Performance ketinggalan lebih 64 jam, dan melaporkan ia kembali normal pada 12 Oktober. Google tidak memberi komen. Bacaan kami, carta yang ketinggalan boleh membuatkan hari-hari terkini kelihatan seperti penurunan, jadi semak tarikh titik data terakhir sebelum anda membaca sebarang aliran.
+Satu peringatan tentang kesegaran data. Pada 11 Oktober, Search Engine Roundtable mendapati laporan Performance ketinggalan lebih 64 jam, dan melaporkan ia kembali normal pada 12 Oktober. Google tidak memberi komen. Bacaan kami, carta yang ketinggalan boleh membuatkan hari-hari terkini kelihatan seperti penurunan, jadi semak tarikh titik data terakhir sebelum anda membaca sebarang aliran. Untuk melihat berapa banyak keterlihatan anda kini datang daripada jawapan AI, panduan kami tentang [laporan AI generatif Search Console](/ms/ai-search/search-console-generative-ai-report/) menerangkan apa yang dikiranya.
 
 ## Lima semakan
 

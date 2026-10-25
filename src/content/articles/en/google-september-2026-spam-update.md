@@ -140,7 +140,7 @@ Google said "all languages", so Malay is covered by its own wording. No source w
 
 Google's guide to debugging traffic drops lists the usual causes: algorithmic updates, technical issues, security issues, spam issues, seasonality and site moves. It suggests comparing date ranges in the Search Console Performance report, checking every tab (queries, pages, countries, devices) and looking back 16 months for yearly patterns. It also says a small move, such as from position 2 to 4, is normal fluctuation.
 
-One caution on freshness. On 11 October, Search Engine Roundtable saw the Performance report more than 64 hours behind, and reported it back to normal on 12 October. Google had not commented. Our reading is that a lagging chart can make the latest days look like a fall, so check the date of the last data point before you read a trend.
+One caution on freshness. On 11 October, Search Engine Roundtable saw the Performance report more than 64 hours behind, and reported it back to normal on 12 October. Google had not commented. Our reading is that a lagging chart can make the latest days look like a fall, so check the date of the last data point before you read a trend. To see how much of your visibility now comes from AI answers, our guide to [Search Console's generative AI report](/ai-search/search-console-generative-ai-report/) explains what it counts.
 
 ## Five checks
 
