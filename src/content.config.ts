@@ -23,6 +23,8 @@ const articles = defineCollection({
     coverCredit: z.string().optional(),
     summary: z.array(z.string()).default([]),
     sources: z.array(z.object({ title: z.string(), url: z.string().url() })).default([]),
+    /** Optional questions and answers shown at the end of the article and published as FAQPage structured data. */
+    faq: z.array(z.object({ question: z.string(), answer: z.string() })).default([]),
   }),
 });
 

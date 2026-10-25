@@ -68,4 +68,12 @@ collections:
         fields:
           - { name: title, label: Title, widget: string }
           - { name: url, label: Link, widget: string }
+      - name: faq
+        label: "FAQ (optional; short questions and plain answers)"
+        widget: list
+        required: false
+        i18n: true
+        fields:
+          - { name: question, label: Question, widget: string }
+          - { name: answer, label: Answer, widget: text }
       - { name: body, label: Article, widget: markdown, i18n: true }

@@ -13,7 +13,7 @@ const { lang, entry } = Astro.props;
 const t = UI[lang];
 const d = entry.data;
 const { Content, headings } = await render(entry);
-const toc = headings.filter((h) => h.depth === 2);
+const toc = headings.filter((h) => h.depth === 2).map((h) => ({ slug: h.slug, text: h.text }));
 const v = vizFor(entry);
 const self = articleUrl(entry);
 const other = await translationUrl(entry);
@@ -27,6 +27,7 @@ const sameTopic = all.filter((a) => a.id !== entry.id && a.data.topic === d.topi
 const related = [...sameTopic, ...all.filter((a) => a.id !== entry.id && a.data.topic !== d.topic)].slice(0, 3);
 const mins = readingMinutes(entry.body);
 const topicName = TOPIC_NAMES[lang][d.topic];
+if (d.faq.length > 0) toc.push({ slug: 'faq', text: t.faq });
 
 const jsonLd = [
   {
@@ -51,6 +52,11 @@ const jsonLd = [
       { '@type': 'ListItem', position: 3, name: d.title, item: new URL(self, SITE.url).href },
     ],
   },
+  ...(d.faq.length > 0 ? [{
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    inLanguage: lang,
+    mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+  }] : []),
 ];
 ---
 <BaseLayout lang={lang} title={d.title} description={d.description} alt={alt} hreflang={hreflang} ogType="article" ogImage={d.cover} jsonLd={jsonLd}>
@@ -91,6 +97,12 @@ const jsonLd = [
             </aside>
           )}
           <Content />
+          {d.faq.length > 0 && (
+            <section class="faq" aria-labelledby="faq">
+              <h2 id="faq">{t.faq}</h2>
+              {d.faq.map((f) => <><h3>{f.question}</h3><p>{f.answer}</p></>)}
+            </section>
+          )}
           {d.sources.length > 0 && (
             <div class="srcs"><span class="cap">{t.sources}</span><ol>{d.sources.map((s) => <li><a href={s.url} rel="noopener" target="_blank">{s.title}</a></li>)}</ol></div>
           )}
