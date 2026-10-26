@@ -3,8 +3,8 @@ title: "ChatGPT Ads in Malaysia and Singapore: a guide"
 description: ChatGPT Ads began rolling out in Malaysia and Singapore on 23 September. Here is who sees them, how to buy, the minimum budget and what we still do not know.
 topic: ai-search
 type: news
-pubDate: 2026-10-27T01:00:00.000Z
-draft: true
+pubDate: 2026-10-26T03:05:00.000Z
+draft: false
 cover: /images/articles/chatgpt-ads-malaysia-singapore.jpg
 coverAlt: The silhouette of a roadside billboard and its supports against an orange and grey evening sky.
 coverCredit: Leo_Visions on Unsplash

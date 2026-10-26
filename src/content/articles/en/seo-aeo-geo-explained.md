@@ -3,8 +3,8 @@ title: "SEO, AEO and GEO explained: which one you need"
 description: SEO, AEO and GEO in plain words, what Google says about them, which fits a local shop, online store, B2B firm or publisher, and what to ask an agency.
 topic: seo
 type: explainer
-pubDate: 2026-10-28T01:00:00.000Z
-draft: true
+pubDate: 2026-10-26T03:10:00.000Z
+draft: false
 cover: /images/articles/seo-aeo-geo-explained.jpg
 coverAlt: Loose sketches of building designs and pens scattered across a wooden desk.
 coverCredit: Marvin Meyer on Unsplash

@@ -3,8 +3,8 @@ title: "SEO, AEO dan GEO dijelaskan: yang mana anda perlukan"
 description: SEO, AEO dan GEO dalam bahasa mudah, apa kata Google, mana sesuai untuk kedai tempatan, kedai dalam talian, firma B2B atau penerbit, dan soalan untuk agensi.
 topic: seo
 type: explainer
-pubDate: 2026-10-28T01:00:00.000Z
-draft: true
+pubDate: 2026-10-26T03:10:00.000Z
+draft: false
 cover: /images/articles/seo-aeo-geo-explained.jpg
 coverAlt: Lakaran reka bentuk bangunan dan pen berselerak di atas meja kayu.
 coverCredit: Marvin Meyer di Unsplash

@@ -3,8 +3,8 @@ title: "Google puts more links in AI answers: what to do"
 description: Google announced five changes on 15 October to send more people from AI Mode and AI Overviews to websites. Here is what each one means and what to do.
 topic: ai-search
 type: news
-pubDate: 2026-10-26T01:00:00.000Z
-draft: true
+pubDate: 2026-10-26T03:00:00.000Z
+draft: false
 cover: /images/articles/google-ai-answers-more-links.jpg
 coverAlt: A wooden footpath signpost with two arrows on a grassy clifftop above a calm sea, with two ships in the distance.
 coverCredit: Antonio Feregrino on Unsplash

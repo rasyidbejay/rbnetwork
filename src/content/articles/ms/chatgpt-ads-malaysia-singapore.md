@@ -3,8 +3,8 @@ title: "ChatGPT Ads di Malaysia dan Singapura: panduan"
 description: ChatGPT Ads mula dilancarkan di Malaysia dan Singapura pada 23 September. Siapa melihatnya, cara membeli, bajet minimum dan perkara yang masih belum diketahui.
 topic: ai-search
 type: news
-pubDate: 2026-10-27T01:00:00.000Z
-draft: true
+pubDate: 2026-10-26T03:05:00.000Z
+draft: false
 cover: /images/articles/chatgpt-ads-malaysia-singapore.jpg
 coverAlt: Siluet papan iklan tepi jalan dan penyokongnya pada langit petang jingga dan kelabu.
 coverCredit: Leo_Visions di Unsplash

@@ -3,8 +3,8 @@ title: "Google tambah pautan dalam jawapan AI: apa perlu dibuat"
 description: Google umumkan lima perubahan pada 15 Oktober untuk menghantar lebih ramai orang dari AI Mode dan AI Overviews ke laman web. Ini maksudnya dan tindakan anda.
 topic: ai-search
 type: news
-pubDate: 2026-10-26T01:00:00.000Z
-draft: true
+pubDate: 2026-10-26T03:00:00.000Z
+draft: false
 cover: /images/articles/google-ai-answers-more-links.jpg
 coverAlt: Papan tanda laluan kayu dengan dua anak panah di puncak tebing berumput menghadap laut yang tenang, dengan dua kapal di kejauhan.
 coverCredit: Antonio Feregrino di Unsplash
