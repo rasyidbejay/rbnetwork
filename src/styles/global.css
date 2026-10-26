@@ -493,6 +493,15 @@ main { animation: vin .6s var(--ease) both; }
 :root[data-theme="dark"] .photo img { filter: saturate(.25) sepia(.18) contrast(.94) brightness(.72); }
 :root[data-theme="dark"] .photo.lined img { filter: saturate(.25) sepia(.18) contrast(.9) brightness(.5); }
 .tile:hover .photo img, .story:hover .photo img { transform: scale(1.05); }
+/* Photos inside article text: <figure class="ph"> with an <img> and a <figcaption>.
+   Same warm, desaturated treatment as the covers, with no line drawing on top. */
+.prose figure.ph { margin: 40px 0; }
+.prose figure.ph img { display: block; width: 100%; height: auto; border-radius: var(--r-md); filter: saturate(.3) sepia(.18) contrast(.96) brightness(.96); }
+.prose figure.ph figcaption { margin-top: 12px; font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: .02em; color: var(--ink-muted); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .prose figure.ph img { filter: saturate(.25) sepia(.18) contrast(.94) brightness(.72); }
+}
+:root[data-theme="dark"] .prose figure.ph img { filter: saturate(.25) sepia(.18) contrast(.94) brightness(.72); }
 @media (max-width: 759px) {
   .empty { min-height: 0; display: grid; }
   .empty .photo { position: relative; height: 240px; }
