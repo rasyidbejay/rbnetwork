@@ -100,7 +100,17 @@ const jsonLd = [
           {d.faq.length > 0 && (
             <section class="faq" aria-labelledby="faq">
               <h2 id="faq">{t.faq}</h2>
-              {d.faq.map((f) => <><h3>{f.question}</h3><p>{f.answer}</p></>)}
+              <div class="faq-list">
+                {d.faq.map((f) => (
+                  <details>
+                    <summary>
+                      <span class="q">{f.question}</span>
+                      <svg class="chev" viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7.5l5 5 5-5" /></svg>
+                    </summary>
+                    <p>{f.answer}</p>
+                  </details>
+                ))}
+              </div>
             </section>
           )}
           {d.sources.length > 0 && (
