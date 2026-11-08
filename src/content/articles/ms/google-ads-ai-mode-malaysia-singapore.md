@@ -6,6 +6,9 @@ type: news
 pubDate: 2026-11-06T21:47:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/google-ads-ai-mode-malaysia-singapore.jpg
+coverAlt: Garis langit Kuala Lumpur waktu senja dengan Menara KL menjulang di atas bumbung bangunan.
+coverCredit: Mytho Digital di Pexels
 summary:
   - Google mengumumkan pada 28 Oktober 2026 bahawa iklan dalam AI Mode sedang diperluas ke sepuluh negara lagi, termasuk Malaysia dan Singapura.
   - Halaman bantuan Google, seperti yang dibaca PPC Land pada 1 November, hanya menyenaraikan bahasa Inggeris. Pengiklan tidak boleh menarik diri daripada AI Mode atau menyasarkannya secara berasingan.
@@ -91,6 +94,8 @@ PPC Land membaca halaman bantuan Google pada 1 November. Perkara utamanya:
 </svg>
 <figcaption style="margin-top:12px;font-size:12px;line-height:16px;font-weight:500;letter-spacing:0.02em;color:var(--ink-muted)">Rajah 1. Iklan dalam ciri AI Google, seperti dilaporkan. Titik berbingkai ialah rancangan, belum aktif. Sumber: PPC Land, Search Engine Roundtable.</figcaption>
 </figure>
+
+<figure class="ph"><img src="/images/articles/google-ads-ai-mode-malaysia-singapore-1.jpg" alt="Pencakar langit daerah kewangan Singapura di seberang air, dengan jejantas melengkung di latar depan." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Foto: Napon Thiphayamontol di Pexels</figcaption></figure>
 
 ## Kenapa sekarang
 

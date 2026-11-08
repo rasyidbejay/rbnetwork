@@ -6,6 +6,9 @@ type: analysis
 pubDate: 2026-11-06T21:50:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/facebook-answers-ai-pages-google.jpg
+coverAlt: Close-up of one hand tapping the screen of a phone held in the other hand.
+coverCredit: Towfiqu barbhuiya on Pexels
 summary:
   - AI-written Facebook Answers pages under facebook.com/fb-answers/ are reportedly indexed by Google, with Glenn Gabe citing about 6 million URLs.
   - Calling them scaled content abuse is Glenn Gabe's judgement. In the coverage we read, Google has not commented.
@@ -72,6 +75,8 @@ Two people are credited with spotting it. Saul Westbrook of Peripheral Creative 
 ## What the figures are worth
 
 The roughly 6 million figure comes from a screenshot of a check against Google's index, and the report does not say which query was used. Westbrook also shared Semrush traffic estimates for the directory, but the report does not print them, and we have not verified any traffic figure. Treat all of these as rough. Anyone outside a company can only estimate how many of its pages Google holds, which is why we call the 6 million an order of magnitude and not a count.
+
+<figure class="ph"><img src="/images/articles/facebook-answers-ai-pages-google-1.jpg" alt="Edges of a tall stack of white paper sheets, in black and white." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Photo: Michaela St on Pexels</figcaption></figure>
 
 ## What Google's policy actually tests
 

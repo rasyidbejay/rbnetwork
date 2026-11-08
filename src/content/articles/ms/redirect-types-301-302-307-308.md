@@ -6,6 +6,9 @@ type: guide
 pubDate: 2026-11-06T22:00:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/redirect-types-301-302-307-308.jpg
+coverAlt: Pandangan udara persimpangan jalan berbilang aras dengan jalan bersilang membentuk X.
+coverCredit: Deva Darshan di Pexels
 summary:
   - Gunakan 301 atau 308 apabila perpindahan kekal, dan 302 atau 307 apabila sementara. Dokumentasi Google melayan 308 seperti 301 dan 307 seperti 302.
   - Ubah hala kekal memberitahu Google bahawa sasaran patut menjadi URL kanonik. Ubah hala sementara tidak, walaupun sasaran masih boleh diindeks.
@@ -122,6 +125,8 @@ Ini bacaan kami terhadap peraturan di atas, bukan senarai daripada Google:
 - **Halaman yang dinamakan semula atau digabungkan:** 301 ke halaman paling sepadan.
 - **Halaman penyelenggaraan singkat atau tawaran bermusim:** 302.
 - **Domain yang berpindah:** 301 bagi setiap URL lama ke padanan barunya. Jangkakan URL lama kekal dalam hasil seketika.
+
+<figure class="ph"><img src="/images/articles/redirect-types-301-302-307-308-1.jpg" alt="Tiang papan tanda dengan beberapa anak panah yang menunjuk ke arah berbeza di bawah langit biru pucat." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Foto: Jonathan Cooper di Pexels</figcaption></figure>
 
 ## Kesilapan yang perlu dielakkan
 

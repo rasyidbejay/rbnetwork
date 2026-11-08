@@ -6,6 +6,9 @@ type: analysis
 pubDate: 2026-11-06T21:56:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/chatgpt-search-volume-claim.jpg
+coverAlt: Hands typing on an illuminated laptop keyboard in a dark room.
+coverCredit: Abdelrahman Ahmed on Pexels
 summary:
   - In an interview published on 3 November 2026, OpenAI's Adam Fry said ChatGPT's volume of search-like queries is roughly one fifth of Google's.
   - OpenAI has not published how it counts a search. Search Engine Land reports it has not explained the comparison, and Google has not confirmed or disputed it.
@@ -75,6 +78,8 @@ The [Search Engine Land headline](https://searchengineland.com/chatgpt-1-trillio
 </svg>
 <figcaption style="margin-top:12px;font-size:12px;line-height:16px;font-weight:500;letter-spacing:0.02em;color:var(--ink-muted)">Figure 1. Three ways to count a search. Our understanding is that one prompt can lead ChatGPT to send more than one web query. The boxes do not show relative size.</figcaption>
 </figure>
+
+<figure class="ph"><img src="/images/articles/chatgpt-search-volume-claim-1.jpg" alt="A tangled cloth tape measure lying on a pale surface." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Photo: Ron Lach on Pexels</figcaption></figure>
 
 ## Why the definition matters
 

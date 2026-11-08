@@ -6,6 +6,9 @@ type: analysis
 pubDate: 2026-11-06T21:56:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/chatgpt-search-volume-claim.jpg
+coverAlt: Tangan menaip pada papan kekunci komputer riba bercahaya di dalam bilik gelap.
+coverCredit: Abdelrahman Ahmed di Pexels
 summary:
   - Dalam temu bual yang disiarkan pada 3 November 2026, Adam Fry dari OpenAI berkata jumlah pertanyaan seakan carian (search-like queries) di ChatGPT kira-kira satu perlima daripada Google.
   - OpenAI belum menerbitkan cara ia mengira satu carian. Search Engine Land melaporkan ia belum menerangkan perbandingan itu, dan Google belum mengesahkan atau menafikannya.
@@ -75,6 +78,8 @@ Dua perkataan memikul beban: "search-like" dan "queries". Kedua-duanya tidak dit
 </svg>
 <figcaption style="margin-top:12px;font-size:12px;line-height:16px;font-weight:500;letter-spacing:0.02em;color:var(--ink-muted)">Rajah 1. Tiga cara mengira satu carian. Fahaman kami, satu prompt boleh menyebabkan ChatGPT menghantar lebih daripada satu pertanyaan web. Saiz kotak tidak menunjukkan nisbah sebenar.</figcaption>
 </figure>
+
+<figure class="ph"><img src="/images/articles/chatgpt-search-volume-claim-1.jpg" alt="Pita ukur kain yang kusut terletak di atas permukaan cerah." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Foto: Ron Lach di Pexels</figcaption></figure>
 
 ## Kenapa takrifan penting
 

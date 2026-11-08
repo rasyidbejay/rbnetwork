@@ -6,6 +6,9 @@ type: guide
 pubDate: 2026-11-06T21:58:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/http-4xx-status-google-search.jpg
+coverAlt: Rows of blue and white fibre optic patch cables plugged into a network panel.
+coverCredit: Brett Sayles on Pexels
 summary:
   - Google's documentation says URLs returning 4xx errors, apart from 429, are treated as not existing, and those already indexed are removed from the index.
   - Gary Illyes said VLC's site, which served a 418 status, was temporarily protected from dropping out because it is an important page. It lost its snippet and favicon.
@@ -63,6 +66,8 @@ The documentation says exotic codes such as 418 are not covered. That makes the 
 A soft 404 is a page that returns 200 but is really an error page. Search Console reports these in the Page indexing report. Google's advice is to return a real 404 or 410 when a page has gone and nothing similar replaces it.
 
 Custom 404 pages deserve a check. Google notes they are made for users, so the server must still return a 404 status. Otherwise the error page may itself be indexed.
+
+<figure class="ph"><img src="/images/articles/http-4xx-status-google-search-1.jpg" alt="An empty highway blocked across all lanes by red and white barriers." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Photo: Jeffry Surianto on Pexels</figcaption></figure>
 
 ## Where accidental 4xx errors come from
 

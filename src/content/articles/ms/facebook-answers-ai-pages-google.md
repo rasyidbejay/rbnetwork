@@ -6,6 +6,9 @@ type: analysis
 pubDate: 2026-11-06T21:50:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/facebook-answers-ai-pages-google.jpg
+coverAlt: Gambar dekat sebelah tangan mengetuk skrin telefon yang dipegang oleh tangan sebelah lagi.
+coverCredit: Towfiqu barbhuiya di Pexels
 summary:
   - Halaman Facebook Answers tulisan AI di bawah facebook.com/fb-answers/ dilaporkan diindeks Google, dengan Glenn Gabe menyebut kira-kira 6 juta URL.
   - Melabelkannya sebagai penyalahgunaan kandungan berskala (scaled content abuse) ialah pendapat Glenn Gabe. Dalam liputan yang kami baca, Google belum mengulas.
@@ -72,6 +75,8 @@ Dua orang dikreditkan kerana menyedarinya. Saul Westbrook dari Peripheral Creati
 ## Berapa nilai angka itu
 
 Angka sekitar 6 juta datang daripada tangkapan skrin semakan terhadap indeks Google, dan laporan itu tidak menyatakan pertanyaan yang digunakan. Westbrook turut berkongsi anggaran trafik Semrush bagi direktori itu, tetapi laporan tidak mencetak angkanya, dan kami tidak mengesahkan sebarang angka trafik. Anggaplah semuanya kasar. Pihak di luar sesebuah syarikat hanya boleh menganggar berapa banyak halamannya yang dipegang Google, sebab itu kami menganggap 6 juta sebagai gambaran kasar dan bukan bilangan tepat.
+
+<figure class="ph"><img src="/images/articles/facebook-answers-ai-pages-google-1.jpg" alt="Tepi timbunan tinggi kertas putih, dalam hitam putih." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Foto: Michaela St di Pexels</figcaption></figure>
 
 ## Apa sebenarnya yang diuji dasar Google
 

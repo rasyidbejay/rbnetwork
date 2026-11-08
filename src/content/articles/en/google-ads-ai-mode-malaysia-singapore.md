@@ -6,6 +6,9 @@ type: news
 pubDate: 2026-11-06T21:47:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/google-ads-ai-mode-malaysia-singapore.jpg
+coverAlt: Kuala Lumpur skyline at dusk with the KL Tower rising above the rooftops.
+coverCredit: Mytho Digital on Pexels
 summary:
   - Google announced on 28 October 2026 that it is scaling ads in AI Mode to ten more countries, including Malaysia and Singapore.
   - Google's help page, as read by PPC Land on 1 November, lists English only. Advertisers cannot opt out of AI Mode or target it on its own.
@@ -91,6 +94,8 @@ PPC Land read Google's help page on 1 November. Its main points:
 </svg>
 <figcaption style="margin-top:12px;font-size:12px;line-height:16px;font-weight:500;letter-spacing:0.02em;color:var(--ink-muted)">Figure 1. Ads in Google's AI features, as reported. The outlined point is planned, not live. Sources: PPC Land, Search Engine Roundtable.</figcaption>
 </figure>
+
+<figure class="ph"><img src="/images/articles/google-ads-ai-mode-malaysia-singapore-1.jpg" alt="Singapore's financial district skyscrapers across the water, with a curved footbridge in the foreground." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Photo: Napon Thiphayamontol on Pexels</figcaption></figure>
 
 ## Why now
 

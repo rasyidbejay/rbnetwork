@@ -6,6 +6,9 @@ type: analysis
 pubDate: 2026-11-06T21:53:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/organic-click-data-conflicting-reports.jpg
+coverAlt: A laptop on a white desk showing line charts, beside a desk lamp and an open notebook.
+coverCredit: Nataliya Vaitkevich on Pexels
 summary:
   - Semrush reported US desktop organic click share rising to 46.11% in September 2026. SEOcrawl AI reports Google organic clicks down 15% year on year across 16,661 sites.
   - The studies count different things. One counts the share of searches that end in an organic click, one counts clicks to a fixed set of sites, and others count click-through rate on chosen queries.
@@ -60,6 +63,8 @@ We read the Semrush figures as reported by Search Engine Land and did not open t
 3. **Device and place differ.** Semrush's report is desktop only, and covers the US and Europe. Mobile and Malaysia are outside it.
 4. **Queries differ.** Seer looked at informational queries. Solis looked at four verticals. Neither tells you about your own queries.
 5. **Vendors publish what their tools see.** Search Engine Land says on its pages that it is owned by Semrush. That is not a reason to doubt the figures, but it is a reason to label them directional.
+
+<figure class="ph"><img src="/images/articles/organic-click-data-conflicting-reports-1.jpg" alt="Aerial view of pedestrians on a zebra crossing between parked vans." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Photo: Grigorii Shcheglov on Pexels</figcaption></figure>
 
 ## A checklist for any click statistic
 

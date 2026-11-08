@@ -6,6 +6,9 @@ type: guide
 pubDate: 2026-11-06T21:58:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/http-4xx-status-google-search.jpg
+coverAlt: Barisan kabel tampal gentian optik biru dan putih yang dipasang pada panel rangkaian.
+coverCredit: Brett Sayles di Pexels
 summary:
   - Dokumentasi Google menyatakan URL yang memulangkan ralat 4xx, selain 429, dianggap tidak wujud, dan yang sudah diindeks akan dibuang daripada indeks.
   - Gary Illyes berkata tapak VLC, yang memaparkan status 418, dilindungi sementara daripada tercicir kerana ia halaman penting. Ia hilang snippet dan favicon.
@@ -63,6 +66,8 @@ Dokumentasi menyatakan kod luar biasa seperti 418 tidak diliputi. Itu menjadikan
 Soft 404 ialah halaman yang memulangkan 200 tetapi sebenarnya halaman ralat. Search Console melaporkannya dalam laporan Page indexing. Nasihat Google ialah pulangkan 404 atau 410 yang sebenar apabila sesuatu halaman sudah tiada dan tiada pengganti yang serupa.
 
 Halaman 404 tersuai wajar disemak. Google mencatat ia dibuat untuk pengguna, jadi pelayan tetap mesti memulangkan status 404. Jika tidak, halaman ralat itu sendiri mungkin diindeks.
+
+<figure class="ph"><img src="/images/articles/http-4xx-status-google-search-1.jpg" alt="Lebuh raya kosong yang disekat merentasi semua lorong oleh penghadang merah putih." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Foto: Jeffry Surianto di Pexels</figcaption></figure>
 
 ## Dari mana datangnya ralat 4xx yang tidak disengajakan
 

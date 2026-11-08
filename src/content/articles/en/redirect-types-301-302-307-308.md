@@ -6,6 +6,9 @@ type: guide
 pubDate: 2026-11-06T22:00:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/redirect-types-301-302-307-308.jpg
+coverAlt: Aerial view of a multi-level road interchange with roads crossing in an X.
+coverCredit: Deva Darshan on Pexels
 summary:
   - Use a 301 or 308 when a move is permanent and a 302 or 307 when it is temporary. Google's documentation treats 308 like 301 and 307 like 302.
   - Permanent redirects tell Google the target should be the canonical URL. Temporary ones do not, though the target can still be indexed.
@@ -122,6 +125,8 @@ These are our reading of the rules above, not a Google list:
 - **A renamed or merged page:** 301 to the closest matching page.
 - **A short maintenance page or a seasonal offer:** 302.
 - **A moved domain:** 301 for each old URL to its new equivalent. Expect old URLs to linger in results for a while.
+
+<figure class="ph"><img src="/images/articles/redirect-types-301-302-307-308-1.jpg" alt="A signpost with several arrow signs pointing in different directions against a pale blue sky." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Photo: Jonathan Cooper on Pexels</figcaption></figure>
 
 ## Mistakes to avoid
 

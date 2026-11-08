@@ -6,6 +6,9 @@ type: analysis
 pubDate: 2026-11-06T21:53:00.000Z
 updatedDate: ''
 draft: false
+cover: /images/articles/organic-click-data-conflicting-reports.jpg
+coverAlt: Komputer riba di atas meja putih memaparkan carta garis, di sebelah lampu meja dan buku nota terbuka.
+coverCredit: Nataliya Vaitkevich di Pexels
 summary:
   - Semrush melaporkan bahagian klik organik desktop di AS naik kepada 46.11% pada September 2026. SEOcrawl AI pula melaporkan klik organik Google turun 15% tahun ke tahun merentasi 16,661 tapak.
   - Kajian-kajian ini mengira perkara yang berbeza. Ada yang mengira bahagian carian yang berakhir dengan klik organik, ada yang mengira klik ke sekumpulan tapak tetap, dan ada yang mengira kadar klik lalu bagi kata kunci pilihan.
@@ -60,6 +63,8 @@ Angka Semrush kami baca seperti yang dilaporkan Search Engine Land, dan kami tid
 3. **Peranti dan tempat berbeza.** Laporan Semrush hanya untuk desktop, dan meliputi AS serta Eropah. Telefon bimbit dan Malaysia di luar skopnya.
 4. **Kata kunci berbeza.** Seer melihat carian bermaklumat. Solis melihat empat sektor. Tiada satu pun memberitahu tentang kata kunci anda sendiri.
 5. **Vendor menerbitkan apa yang dilihat alat mereka.** Search Engine Land menyatakan di lamannya bahawa ia dimiliki Semrush. Itu bukan sebab untuk meragui angkanya, tetapi ia sebab untuk melabelkannya sebagai petunjuk arah.
+
+<figure class="ph"><img src="/images/articles/organic-click-data-conflicting-reports-1.jpg" alt="Pandangan udara pejalan kaki di lintasan zebra di antara van yang berhenti." width="1600" height="900" loading="lazy" decoding="async"><figcaption>Foto: Grigorii Shcheglov di Pexels</figcaption></figure>
 
 ## Senarai semak untuk mana-mana statistik klik
 
