@@ -1,5 +1,3 @@
-import { paint } from './viz';
-
 const $ = <T extends Element = HTMLElement>(s: string, r: ParentNode = document) => r.querySelector<T>(s);
 const $$ = <T extends Element = HTMLElement>(s: string, r: ParentNode = document) => [...r.querySelectorAll<T>(s)];
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -37,13 +35,7 @@ $$('[data-theme-set]').forEach((b) => b.addEventListener('click', () => applyThe
 const ov = $('#ixOver');
 const openBtn = $('#openIx');
 function preview(a: HTMLElement) {
-  const cv = $<HTMLCanvasElement>('#ixCanvas');
-  if (!cv) return;
-  cv.dataset.viz = a.dataset.pvKind || 'terrain';
-  cv.dataset.seed = a.dataset.pvSeed || '1';
-  cv.dataset.night = a.dataset.pvKind === 'team' ? '1' : '';
-  cv.dataset.big = '1';
-  requestAnimationFrame(() => paint(cv));
+  $$('#ixPrev .pv').forEach((p) => p.classList.toggle('on', p.dataset.pv === a.dataset.pv));
   const cap = $('#ixCap');
   if (cap) cap.textContent = a.querySelector('span')?.textContent || '';
   $$('#ixList a').forEach((x) => x.classList.toggle('on', x === a));
@@ -70,6 +62,16 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeIx();
 $$('#ixList a').forEach((a) => {
   a.addEventListener('mouseenter', () => preview(a));
   a.addEventListener('focus', () => preview(a));
+});
+
+/* ---------- topic band: pause and play ---------- */
+const band = $('#band');
+const bandBtn = $<HTMLButtonElement>('#bandPause');
+bandBtn?.addEventListener('click', () => {
+  const on = !band?.classList.contains('paused');
+  band?.classList.toggle('paused', on);
+  bandBtn.setAttribute('aria-pressed', String(on));
+  bandBtn.setAttribute('aria-label', (on ? bandBtn.dataset.play : bandBtn.dataset.pause) || '');
 });
 
 /* ---------- "Three ways to be found" explainer ---------- */

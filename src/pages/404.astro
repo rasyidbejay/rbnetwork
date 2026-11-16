@@ -1,16 +1,13 @@
 ---
 import { UI } from '../i18n/ui';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Viz from '../components/Viz.astro';
 const t = UI.en;
 const m = UI.ms;
 ---
 <BaseLayout lang="en" title="404" description={t.nfP} alt={{ en: '/', ms: '/ms/' }} noindex>
   <div class="nf">
-    <Viz kind="lost" />
-    <div class="lost" aria-hidden="true"><i></i><span>{t.here}</span></div>
     <div class="wrap">
-      <div class="big" aria-hidden="true">404</div>
+      <div class="big" aria-hidden="true">404<span class="dot"></span></div>
       <div class="card">
         <h1>{t.nfH}</h1>
         <p class="muted">{t.nfP}</p>

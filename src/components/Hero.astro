@@ -1,0 +1,20 @@
+---
+import type { Lang } from '../config/site';
+import { UI } from '../i18n/ui';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = UI[lang];
+---
+<section class="hero" aria-labelledby="hero-h">
+  <div class="wrap">
+    <h1 class="hero-title" id="hero-h" aria-label={t.heroLabel}>
+      <span class="ln" aria-hidden="true"><span>{t.heroA}</span></span>
+      <span class="ln" aria-hidden="true"><span>{t.heroB}</span><span class="pill"><i></i></span></span>
+      <span class="ln" aria-hidden="true"><span><span class="out">{t.heroC}</span><span class="dot"></span></span></span>
+    </h1>
+    <div class="hero-foot">
+      <p>{t.lead}</p>
+      <a class="btn btn-ink" href="#latest"><span>{t.ctaLatest}</span><span class="arr" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

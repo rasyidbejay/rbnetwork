@@ -1,0 +1,6 @@
+---
+/** Typographic cover, used only when an article has no photo. */
+interface Props { label: string }
+const { label } = Astro.props;
+---
+<div class="plate" aria-hidden="true"><i></i><b>{label}</b></div>

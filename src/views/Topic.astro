@@ -1,11 +1,12 @@
 ---
-import { SITE, TOPIC_VIZ, type Lang, type Topic } from '../config/site';
+import { SITE, type Lang, type Topic } from '../config/site';
 import { UI, TOPIC_NAMES, TOPIC_DESC, localePath } from '../i18n/ui';
 import type { Article } from '../lib/articles';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StoryCard from '../components/StoryCard.astro';
 import EmptyState from '../components/EmptyState.astro';
-import Viz from '../components/Viz.astro';
+import Photo from '../components/Photo.astro';
+import { PHOTOS, TOPIC_PHOTO } from '../lib/photos';
 
 interface Props { lang: Lang; topic: Topic; items: Article[]; page: number; totalPages: number }
 const { lang, topic, items, page, totalPages } = Astro.props;
@@ -25,17 +26,19 @@ const jsonLd = [{
 ---
 <BaseLayout lang={lang} title={title} description={TOPIC_DESC[lang][topic]} alt={alt} hreflang={self} jsonLd={jsonLd}>
   <div class="t-hero">
-    <Viz kind={TOPIC_VIZ[topic].kind} seed={TOPIC_VIZ[topic].seed} big />
-    <div class="pnl"><div class="wrap"><div class="card">
-      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href={localePath(lang, '/')}>{t.home}</a></li><li><span>{t.topics}</span></li></ol></nav>
-      <h1>{name}</h1>
-      <p>{TOPIC_DESC[lang][topic]}</p>
-    </div></div></div>
+    <div class="wrap">
+      <div class="card">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href={localePath(lang, '/')}>{t.home}</a></li><li><span>{t.topics}</span></li></ol></nav>
+        <h1>{name}</h1>
+        <p>{TOPIC_DESC[lang][topic]}</p>
+      </div>
+      <div class="t-ph"><Photo src={PHOTOS[TOPIC_PHOTO[topic]].src} alt={PHOTOS[TOPIC_PHOTO[topic]].alt[lang]} sizes="100vw" eager /></div>
+    </div>
   </div>
 
   <section class="wrap sec" aria-label={name}>
     {items.length === 0 ? (
-      <EmptyState lang={lang} variant="topic" seed={41} />
+      <EmptyState lang={lang} variant="topic" />
     ) : (
       <>
         <div class="grid3">{items.map((a) => <StoryCard a={a} lang={lang} showDek />)}</div>

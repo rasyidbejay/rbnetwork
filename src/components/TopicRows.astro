@@ -1,0 +1,21 @@
+---
+import { TOPICS, type Lang, type Topic } from '../config/site';
+import { UI, TOPIC_NAMES, TOPIC_SHORT, localePath } from '../i18n/ui';
+interface Props { lang: Lang; counts: Record<Topic, number> }
+const { lang, counts } = Astro.props;
+const t = UI[lang];
+---
+<ul class="rows">
+  {TOPICS.map((k, i) => (
+    <li>
+      <a href={localePath(lang, `/${k}/`)}>
+        <span class="rn">{String(i + 1).padStart(2, '0')}</span>
+        <span class="rt">{TOPIC_NAMES[lang][k]}</span>
+        <span class="rd">
+          <span class="tx">{TOPIC_SHORT[lang][k]}{counts[k] > 0 && <span class="cnt">{counts[k]} {counts[k] === 1 ? t.article1 : t.articles}</span>}</span>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+        </span>
+      </a>
+    </li>
+  ))}
+</ul>

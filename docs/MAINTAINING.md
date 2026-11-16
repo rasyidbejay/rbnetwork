@@ -54,9 +54,8 @@ sources:              # optional
 Article text in Markdown. Use ## for section headings; they build the "On this page" list.
 ```
 
-Each article gets its own generated cover: terrain for SEO, a network for AI Search, a page wireframe for Web Development.
-To use a photo instead, set `cover` (upload it in the editor, or put it in `public/images/articles/`), plus `coverAlt` and `coverCredit`.
-Photos get the site's warm, muted treatment and a thin line drawing on top automatically.
+Each article should have a cover photo: set `cover` (upload it in the editor, or put it in `public/images/articles/`), plus `coverAlt` and `coverCredit`.
+Photos get the site's cool, muted treatment automatically. An article without a cover shows a plain typographic cover with its topic name.
 
 `src/content/articles/en/sample-layout-article.md` is a draft that shows the article layout. Delete it once real articles exist.
 
@@ -87,9 +86,8 @@ src/
   layouts/               Page shell: head tags, header, Index menu, footer
   views/                 Page designs shared by both languages
   pages/                 Routes (ms/ holds the Malay routes)
-  components/            Header, hero map, cards, explainer and more
-  scripts/viz.ts         Generated pictures (terrain, networks, wireframes) and photo overlays
-  scripts/site.ts        Menu, theme, explainer tabs, reading progress, contact form
+  components/            Header, hero, topic band, topic rows, cards, explainer and more
+  scripts/site.ts        Menu, theme, topic band pause, explainer tabs, reading progress, contact form
   styles/global.css      Brand colours, type and layout
   assets/fonts/          Instrument Sans (SIL Open Font License)
   assets/photos/         Site photos (Unsplash, free licence); credits in src/lib/photos.ts

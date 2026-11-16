@@ -23,7 +23,7 @@ Consult these guides before working on related tasks:
 
 ## Project notes
 
-- Design: "Living field". Brand tokens are in `src/styles/global.css`; do not add gradients, shadows, a second accent colour or font weight 700.
+- Design: "Editorial theatre" (cool neutrals, very large type, one terracotta accent and band). Brand tokens are in `src/styles/global.css`; do not add gradients, shadows, a second accent colour or font weight 700. No generated terrain, roots or contour art; photos are plain and cool-toned.
 - Interface text lives in `src/i18n/ui.ts` (English and Malay). Page designs live in `src/views/` and are shared by `src/pages/` and `src/pages/ms/`.
 - Articles: `src/content/articles/<en|ms>/<slug>.md`, same slug in both languages. Schema in `src/content.config.ts`.
 - The CMS config is `public/admin/config.yml`; keep its fields in step with the schema.

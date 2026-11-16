@@ -2,10 +2,10 @@
 import { render } from 'astro:content';
 import { SITE, type Lang } from '../config/site';
 import { UI, TOPIC_NAMES, TYPE_NAMES, localePath, formatDate } from '../i18n/ui';
-import { getArticles, articleUrl, translationUrl, vizFor, readingMinutes, seedOf, splitId, type Article } from '../lib/articles';
+import { getArticles, articleUrl, translationUrl, readingMinutes, type Article } from '../lib/articles';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StoryCard from '../components/StoryCard.astro';
-import Viz from '../components/Viz.astro';
+import Plate from '../components/Plate.astro';
 import Photo from '../components/Photo.astro';
 
 interface Props { lang: Lang; entry: Article }
@@ -14,7 +14,6 @@ const t = UI[lang];
 const d = entry.data;
 const { Content, headings } = await render(entry);
 const toc = headings.filter((h) => h.depth === 2).map((h) => ({ slug: h.slug, text: h.text }));
-const v = vizFor(entry);
 const self = articleUrl(entry);
 const other = await translationUrl(entry);
 const otherLang: Lang = lang === 'en' ? 'ms' : 'en';
@@ -63,8 +62,8 @@ const jsonLd = [
   <div class="progress" id="progress" aria-hidden="true"><i></i></div>
   <article>
     <div class="a-hero">{d.cover
-      ? <><Photo src={d.cover} alt={d.coverAlt ?? ''} overlay={v.kind} seed={v.seed} eager />{d.coverCredit && <span class="tag cap">{t.photoBy}: {d.coverCredit}</span>}</>
-      : <><Viz kind={v.kind} seed={v.seed} big /><span class="tag cap">{t.coverNote}</span></>}</div>
+      ? <><Photo src={d.cover} alt={d.coverAlt ?? ''} eager />{d.coverCredit && <span class="tag cap">{t.photoBy}: {d.coverCredit}</span>}</>
+      : <Plate label={topicName} />}</div>
     <div class="wrap a-head">
       <header class="a-card">
         <nav class="crumbs" aria-label="Breadcrumb"><ol>
@@ -92,7 +91,7 @@ const jsonLd = [
         <div class="prose">
           {d.summary.length > 0 && (
             <aside class="short" aria-label={t.inShort}>
-              <div class="vz"><Viz kind="terrain" seed={seedOf(splitId(entry.id).slug) + 9} /></div>
+              <div class="vz" aria-hidden="true"><i></i></div>
               <div class="tx"><h2>{t.inShort}</h2><ul>{d.summary.map((s) => <li>{s}</li>)}</ul></div>
             </aside>
           )}

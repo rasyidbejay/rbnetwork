@@ -14,12 +14,5 @@ export type Lang = (typeof LANGS)[number];
 export const TOPICS = ['seo', 'ai-search', 'web-development'] as const;
 export type Topic = (typeof TOPICS)[number];
 
-/** Which generated visual each topic uses, and the seed for its hero. */
-export const TOPIC_VIZ: Record<Topic, { kind: 'terrain' | 'network' | 'grid'; seed: number }> = {
-  seo: { kind: 'terrain', seed: 312 },
-  'ai-search': { kind: 'network', seed: 331 },
-  'web-development': { kind: 'grid', seed: 305 },
-};
-
 export const ARTICLE_TYPES = ['news', 'analysis', 'explainer', 'guide'] as const;
 export type ArticleType = (typeof ARTICLE_TYPES)[number];

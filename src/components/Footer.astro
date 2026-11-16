@@ -1,14 +1,12 @@
 ---
 import { TOPICS, type Lang } from '../config/site';
 import { UI, TOPIC_NAMES, localePath } from '../i18n/ui';
-import Viz from './Viz.astro';
 interface Props { lang: Lang; alt: { en: string; ms: string } }
 const { lang, alt } = Astro.props;
 const t = UI[lang];
 const year = new Date().getFullYear();
 ---
 <footer class="foot">
-  <Viz kind="footer" />
   <div class="wrap">
     <div class="f-top">
       <p class="f-big">{t.footBig}</p>
